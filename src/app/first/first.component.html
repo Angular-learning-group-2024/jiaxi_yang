@@ -1,0 +1,24 @@
+<h3 class="text-xl">First component</h3>
+
+<div class="text-xxl">{{ firstChild.count }}</div>
+<div class="flex gap-2">
+  <button
+    (click)="firstChild.addCount()"
+    class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+  >
+    Add count
+  </button>
+  <button
+    (click)="firstChild.minusCount()"
+    class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+  >
+    Minus count
+  </button>
+  <button
+    (click)="firstChild.resetCount()"
+    class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+  >
+    Reset count
+  </button>
+</div>
+<app-first-child #firstChild></app-first-child>
