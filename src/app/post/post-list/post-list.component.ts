@@ -17,6 +17,10 @@ export class PostListComponent implements OnInit {
 
   constructor(private postService: PostService) {}
   ngOnInit(): void {
+    this.getPosts();
+  }
+
+  getPosts() {
     this.postService.getPosts().subscribe({
       next: (posts) => {
         this.posts = posts.slice(0, 10);
