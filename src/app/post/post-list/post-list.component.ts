@@ -12,11 +12,20 @@ import { RouterModule } from '@angular/router';
 })
 export class PostListComponent implements OnInit {
   posts: TPost[] = [];
+  isLoading = true;
+  isError = false;
 
   constructor(private postService: PostService) {}
   ngOnInit(): void {
-    this.postService.getPosts().subscribe((posts) => {
-      this.posts = posts.slice(0, 10);
+    this.postService.getPosts().subscribe({
+      next: (posts) => {
+        this.posts = posts.slice(0, 10);
+        this.isLoading = false;
+      },
+      error: () => {
+        this.isLoading = false;
+        this.isError = true;
+      },
     });
   }
 }

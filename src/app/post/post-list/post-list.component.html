@@ -1,8 +1,13 @@
-<div
-  *ngFor="let post of posts; index as i"
-  class="font-medium text-blue-600 dark:text-blue-500 hover:underline p-2"
->
-  <a [routerLink]="['/post', post.id]" routerLinkActive="active">
-    {{ i + 1 }}. {{ post.title }}
-  </a>
-</div>
+<ng-container *ngIf="isLoading"> Loading... </ng-container>
+<ng-container *ngIf="isError"> Something went wrong... </ng-container>
+
+<ng-container *ngIf="!isLoading && posts.length > 0">
+  <div
+    *ngFor="let post of posts; index as i"
+    class="font-medium text-blue-600 dark:text-blue-500 hover:underline p-2"
+  >
+    <a [routerLink]="['/post', post.id]" routerLinkActive="active">
+      {{ i + 1 }}. {{ post.title }}
+    </a>
+  </div>
+</ng-container>
