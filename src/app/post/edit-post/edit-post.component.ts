@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './edit-post.component.html',
-  styleUrl: './edit-post.component.less'
+  styleUrl: './edit-post.component.less',
 })
-export class EditPostComponent {
-
-}
+export class EditPostComponent {}
