@@ -14,7 +14,8 @@ export class PostItemComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private postService: PostService
+    private postService: PostService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -26,5 +27,9 @@ export class PostItemComponent implements OnInit {
     this.postService.getPostById(postId).subscribe((postDetail) => {
       this.postDetail = postDetail;
     });
+  }
+
+  gotoPostList() {
+    this.router.navigate(["/post"]);
   }
 }
