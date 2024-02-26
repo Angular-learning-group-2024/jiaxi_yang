@@ -1,38 +1,36 @@
-import { Routes, Route } from '@angular/router';
-import { FirstComponent } from './first/first.component';
-import { SecondComponent } from './second/second.component';
-import { TodoComponent } from './todo/todo.component';
-import { FormComponent } from './form/form.component';
+import { Route } from "@angular/router";
+import { PostListComponent } from "./post/post-list/post-list.component";
+import { PostItemComponent } from "./post/post-item/post-item.component";
+import { PageNotFoundComponent } from "./common/page-not-found/page-not-found.component";
+import { authGuard } from "./auth.guard";
+import { LoginComponent } from "./common/login/login.component";
 
-type TRoute = Route & {
-  name: string;
-};
+type TRoute = Route;
 
 export const routes: TRoute[] = [
   {
-    path: 'first',
-    component: FirstComponent,
-    name: 'First Component',
+    path: "",
+    redirectTo: "post",
+    pathMatch: "full",
   },
   {
-    path: '',
-    redirectTo: 'todo',
-    pathMatch: 'full',
-    name: 'Todo Component',
+    path: "post",
+    canActivate: [authGuard],
+    children: [
+      {
+        path: ":id",
+        component: PostItemComponent,
+      },
+      {
+        path: "",
+        component: PostListComponent,
+      },
+    ],
   },
   {
-    path: 'second',
-    name: 'Second Component',
-    component: SecondComponent,
+    path: "login",
+    component: LoginComponent,
   },
-  {
-    path: 'todo',
-    name: 'Todo Component',
-    component: TodoComponent,
-  },
-  {
-    path: 'form',
-    component: FormComponent,
-    name: 'Form Component',
-  },
+
+  { path: "**", component: PageNotFoundComponent },
 ];
