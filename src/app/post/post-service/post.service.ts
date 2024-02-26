@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { BASE_URL } from '../../../constant/api';
-import { HttpClient } from '@angular/common/http';
-import { TPost } from './post.interface';
-import { Observable } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { BASE_URL } from "../../../constant/api";
+import { HttpClient } from "@angular/common/http";
+import { TPost } from "./post.interface";
+import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class PostService {
   constructor(private http: HttpClient) {}

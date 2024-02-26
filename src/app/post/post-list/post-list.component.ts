@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { TPost } from '../post-service/post.interface';
-import { PostService } from '../post-service/post.service';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { TPost } from "../post-service/post.interface";
+import { PostService } from "../post-service/post.service";
+import { CommonModule } from "@angular/common";
+import { RouterModule } from "@angular/router";
+import { LoadingErrorIndicatorComponent } from "../../common/loading-error-indicator/loading-error-indicator.component";
 
 @Component({
-  selector: 'app-post-list',
+  selector: "app-post-list",
   standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './post-list.component.html',
+  imports: [CommonModule, RouterModule, LoadingErrorIndicatorComponent],
+  templateUrl: "./post-list.component.html",
 })
 export class PostListComponent implements OnInit {
   posts: TPost[] = [];

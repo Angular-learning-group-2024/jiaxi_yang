@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { EditPostComponent } from './edit-post.component';
+import { EditPostComponent } from "./edit-post.component";
 
-describe('EditPostComponent', () => {
+describe("EditPostComponent", () => {
   let component: EditPostComponent;
   let fixture: ComponentFixture<EditPostComponent>;
 
@@ -16,7 +16,7 @@ describe('EditPostComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

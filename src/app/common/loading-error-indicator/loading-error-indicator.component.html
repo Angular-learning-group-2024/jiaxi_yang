@@ -1,0 +1,5 @@
+<ng-container *ngIf="!isLoading && !isError">
+  <ng-content></ng-content>
+</ng-container>
+<div *ngIf="isLoading">Loading...</div>
+<div *ngIf="isError">Error loading data.</div>
