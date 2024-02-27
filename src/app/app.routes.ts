@@ -10,6 +10,7 @@ import { canDeactivateGuard } from "./can-deactivate.guard";
 import { postItemResolver } from "./post/post-item/post-item.resolver";
 import { postListResolver } from "./post/post-list/post-list.resolver";
 import { PageErrorComponent } from "./common/page-error/page-error.component";
+import { ComponentPlayGround } from "./components/main/main.component";
 
 type TRoute = Route;
 
@@ -58,6 +59,9 @@ export const routes: TRoute[] = [
       },
     ],
   },
-
+  {
+    path: "component-playground",
+    component: ComponentPlayGround,
+  },
   { path: "**", component: PageNotFoundComponent },
 ];
