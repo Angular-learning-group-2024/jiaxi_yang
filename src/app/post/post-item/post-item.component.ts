@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, inject } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { TPost } from "../post-service/post.interface";
 
@@ -10,11 +10,8 @@ import { TPost } from "../post-service/post.interface";
 })
 export class PostItemComponent implements OnInit {
   postItem: TPost = {} as TPost;
-
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
 
   ngOnInit() {
     this.route.data.subscribe((data) => {

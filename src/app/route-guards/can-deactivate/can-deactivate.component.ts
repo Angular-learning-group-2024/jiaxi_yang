@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { DialogService } from "../../dialog.service";
@@ -11,11 +11,8 @@ import { DialogService } from "../../dialog.service";
 })
 export class CanDeactivateComponent {
   dataHasChanged = false;
-
-  constructor(
-    private router: Router,
-    private dialogService: DialogService
-  ) {}
+  private dialogService = inject(DialogService);
+  private router = inject(Router);
 
   changeData() {
     this.dataHasChanged = true;

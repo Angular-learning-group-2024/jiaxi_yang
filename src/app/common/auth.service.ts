@@ -8,8 +8,6 @@ export class AuthService {
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
-  constructor() {}
-
   isUserLoggedIn() {
     return this.isLoggedInSubject.value;
   }

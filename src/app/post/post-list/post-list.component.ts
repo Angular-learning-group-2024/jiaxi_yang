@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, inject } from "@angular/core";
 import { TPost } from "../post-service/post.interface";
 import { CommonModule } from "@angular/common";
 import { ActivatedRoute, RouterModule } from "@angular/router";
@@ -11,8 +11,8 @@ import { ActivatedRoute, RouterModule } from "@angular/router";
 })
 export class PostListComponent implements OnInit {
   postList: TPost[] = [];
+  private route = inject(ActivatedRoute);
 
-  constructor(private route: ActivatedRoute) {}
   ngOnInit(): void {
     this.getPostList();
   }
