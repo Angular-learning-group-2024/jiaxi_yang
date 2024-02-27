@@ -4,6 +4,9 @@ import { PostItemComponent } from "./post/post-item/post-item.component";
 import { PageNotFoundComponent } from "./common/page-not-found/page-not-found.component";
 import { authGuard } from "./auth.guard";
 import { LoginComponent } from "./common/login/login.component";
+import { CanDeactivateComponent } from "./route-guards/can-deactivate/can-deactivate.component";
+import { RouteGuardsComponent } from "./route-guards/route-guards.component";
+import { canDeactivateGuard } from "./can-deactivate.guard";
 
 type TRoute = Route;
 
@@ -30,6 +33,17 @@ export const routes: TRoute[] = [
   {
     path: "login",
     component: LoginComponent,
+  },
+  {
+    path: "route-guards",
+    component: RouteGuardsComponent,
+    children: [
+      {
+        path: "can-deactivate",
+        component: CanDeactivateComponent,
+        canDeactivate: [canDeactivateGuard],
+      },
+    ],
   },
 
   { path: "**", component: PageNotFoundComponent },
