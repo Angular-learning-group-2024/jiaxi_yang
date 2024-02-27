@@ -1,9 +1,9 @@
-<div
-  *ngFor="let post of postList; index as i"
-  class="font-medium text-blue-600 dark:text-blue-500 hover:underline p-2"
->
-  <a [routerLink]="['/post', post.id]" routerLinkActive="active">
-    {{ i + 1 }}. {{ post.title }}
-  </a>
-</div>
+@for (post of postList; track post.id) {
+  <div class="font-medium text-blue-600 dark:text-blue-500 hover:underline p-2">
+    <a [routerLink]="['/post', post.id]" routerLinkActive="active">
+      {{ $index + 1 }}. {{ post.title }}
+    </a>
+  </div>
+}
+
 <router-outlet></router-outlet>
