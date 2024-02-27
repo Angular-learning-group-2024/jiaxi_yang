@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { TPost } from "../post-service/post.interface";
-import { PostService } from "../post-service/post.service";
 
 @Component({
   selector: "app-post-item",
@@ -10,22 +9,17 @@ import { PostService } from "../post-service/post.service";
   templateUrl: "./post-item.component.html",
 })
 export class PostItemComponent implements OnInit {
-  postDetail: TPost = {} as TPost;
+  postItem: TPost = {} as TPost;
 
   constructor(
     private route: ActivatedRoute,
-    private postService: PostService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    const postId = this.route.snapshot.paramMap.get("id");
-    if (!postId) {
-      return;
-    }
-
-    this.postService.getPostById(postId).subscribe((postDetail) => {
-      this.postDetail = postDetail;
+    this.route.data.subscribe((data) => {
+      const postDetail: TPost = data["postItem"];
+      this.postItem = postDetail;
     });
   }
 

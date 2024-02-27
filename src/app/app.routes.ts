@@ -7,6 +7,7 @@ import { LoginComponent } from "./common/login/login.component";
 import { CanDeactivateComponent } from "./route-guards/can-deactivate/can-deactivate.component";
 import { RouteGuardsComponent } from "./route-guards/route-guards.component";
 import { canDeactivateGuard } from "./can-deactivate.guard";
+import { postItemResolver } from "./post/post-item/post-item.resolver";
 
 type TRoute = Route;
 
@@ -23,6 +24,9 @@ export const routes: TRoute[] = [
       {
         path: ":id",
         component: PostItemComponent,
+        resolve: {
+          postItem: postItemResolver,
+        },
       },
       {
         path: "",
