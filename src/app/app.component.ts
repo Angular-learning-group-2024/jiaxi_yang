@@ -1,6 +1,15 @@
 import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
-import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
+import {
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+  RouterOutlet,
+} from "@angular/router";
 
 @Component({
   selector: "app-root",
@@ -8,4 +17,26 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
   imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: "./app.component.html",
 })
-export class AppComponent {}
+export class AppComponent {
+  loading = false;
+  constructor(private router: Router) {
+    this.router.events.subscribe((event) => {
+      switch (true) {
+        case event instanceof NavigationStart: {
+          this.loading = true;
+          break;
+        }
+
+        case event instanceof NavigationEnd:
+        case event instanceof NavigationCancel:
+        case event instanceof NavigationError: {
+          this.loading = false;
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+    });
+  }
+}

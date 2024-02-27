@@ -8,6 +8,8 @@ import { CanDeactivateComponent } from "./route-guards/can-deactivate/can-deacti
 import { RouteGuardsComponent } from "./route-guards/route-guards.component";
 import { canDeactivateGuard } from "./can-deactivate.guard";
 import { postItemResolver } from "./post/post-item/post-item.resolver";
+import { postListResolver } from "./post/post-list/post-list.resolver";
+import { PageErrorComponent } from "./common/page-error/page-error.component";
 
 type TRoute = Route;
 
@@ -31,12 +33,19 @@ export const routes: TRoute[] = [
       {
         path: "",
         component: PostListComponent,
+        resolve: {
+          postList: postListResolver,
+        },
       },
     ],
   },
   {
     path: "login",
     component: LoginComponent,
+  },
+  {
+    path: "error",
+    component: PageErrorComponent,
   },
   {
     path: "route-guards",

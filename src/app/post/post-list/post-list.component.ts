@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { TPost } from "../post-service/post.interface";
-import { PostService } from "../post-service/post.service";
 import { CommonModule } from "@angular/common";
-import { RouterModule } from "@angular/router";
+import { ActivatedRoute, RouterModule } from "@angular/router";
 import { LoadingErrorIndicatorComponent } from "../../common/loading-error-indicator/loading-error-indicator.component";
 
 @Component({
@@ -12,25 +11,17 @@ import { LoadingErrorIndicatorComponent } from "../../common/loading-error-indic
   templateUrl: "./post-list.component.html",
 })
 export class PostListComponent implements OnInit {
-  posts: TPost[] = [];
-  isLoading = true;
-  isError = false;
+  postList: TPost[] = [];
 
-  constructor(private postService: PostService) {}
+  constructor(private route: ActivatedRoute) {}
   ngOnInit(): void {
-    this.getPosts();
+    this.getPostList();
   }
 
-  getPosts() {
-    this.postService.getPosts().subscribe({
-      next: (posts) => {
-        this.posts = posts.slice(0, 10);
-        this.isLoading = false;
-      },
-      error: () => {
-        this.isLoading = false;
-        this.isError = true;
-      },
+  getPostList() {
+    this.route.data.subscribe((data) => {
+      const postList: TPost[] = data["postList"];
+      this.postList = postList;
     });
   }
 }

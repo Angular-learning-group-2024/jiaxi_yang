@@ -1,11 +1,9 @@
-<app-loading-error-indicator [isError]="isError" [isLoading]="isLoading">
-  <div
-    *ngFor="let post of posts; index as i"
-    class="font-medium text-blue-600 dark:text-blue-500 hover:underline p-2"
-  >
-    <a [routerLink]="['/post', post.id]" routerLinkActive="active">
-      {{ i + 1 }}. {{ post.title }}
-    </a>
-  </div>
-</app-loading-error-indicator>
+<div
+  *ngFor="let post of postList; index as i"
+  class="font-medium text-blue-600 dark:text-blue-500 hover:underline p-2"
+>
+  <a [routerLink]="['/post', post.id]" routerLinkActive="active">
+    {{ i + 1 }}. {{ post.title }}
+  </a>
+</div>
 <router-outlet></router-outlet>
