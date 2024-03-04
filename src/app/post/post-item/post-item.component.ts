@@ -1,11 +1,12 @@
 import { Component, OnInit, inject } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { TPost } from "../post-service/post.interface";
+import { PostListItemComponent } from "../post-list/post-list-item/post-list-item.component";
 
 @Component({
   selector: "app-post-item",
   standalone: true,
-  imports: [],
+  imports: [PostListItemComponent],
   templateUrl: "./post-item.component.html",
 })
 export class PostItemComponent implements OnInit {
@@ -22,5 +23,8 @@ export class PostItemComponent implements OnInit {
 
   gotoPostList() {
     this.router.navigate(["/post"]);
+  }
+  editPost() {
+    this.router.navigate(["/post/edit", this.postItem.id]);
   }
 }

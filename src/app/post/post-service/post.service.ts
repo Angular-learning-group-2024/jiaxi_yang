@@ -17,4 +17,8 @@ export class PostService {
   getPostById(id: string): Observable<TPost> {
     return this.http.get<TPost>(`${BASE_URL}/posts/${id}`);
   }
+
+  updatePost(post: TPost): Observable<TPost> {
+    return this.http.put<TPost>(`${BASE_URL}/posts/${post.id}`, post);
+  }
 }

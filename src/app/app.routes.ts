@@ -11,6 +11,7 @@ import { postItemResolver } from "./post/post-item/post-item.resolver";
 import { postListResolver } from "./post/post-list/post-list.resolver";
 import { PageErrorComponent } from "./common/page-error/page-error.component";
 import { ComponentPlayGround } from "./components/main/main.component";
+import { EditPostComponent } from "./post/edit-post/edit-post.component";
 
 type TRoute = Route;
 
@@ -36,6 +37,13 @@ export const routes: TRoute[] = [
         component: PostListComponent,
         resolve: {
           postList: postListResolver,
+        },
+      },
+      {
+        path: "edit/:id",
+        component: EditPostComponent,
+        resolve: {
+          postItem: postItemResolver,
         },
       },
     ],

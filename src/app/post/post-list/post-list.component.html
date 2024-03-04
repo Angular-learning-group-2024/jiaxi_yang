@@ -1,9 +1,6 @@
-@for (post of postList; track post.id) {
-  <div class="font-medium text-blue-600 dark:text-blue-500 hover:underline p-2">
-    <a [routerLink]="['/post', post.id]" routerLinkActive="active">
-      {{ $index + 1 }}. {{ post.title }}
-    </a>
-  </div>
-}
-
+<div class="flex flex-col gap-4">
+  @for (post of postList; track post.id) {
+    <app-post-list-item [postItem]="post"></app-post-list-item>
+  }
+</div>
 <router-outlet></router-outlet>
