@@ -1,0 +1,63 @@
+<p>Form Status: {{ postForm.status }}</p>
+
+<form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+  <div class="mb-6">
+    <label
+      for="default-input"
+      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Title</label
+    >
+    <input
+      type="text"
+      formControlName="title"
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    />
+    @if (postForm.hasError("required", "title")) {
+      <div class="text-red-500">Title is required</div>
+    }
+  </div>
+  <label
+    for="message"
+    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    >Your Post</label
+  >
+  <textarea
+    rows="4"
+    formControlName="body"
+    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    placeholder="Write your thoughts here..."
+  ></textarea>
+
+  <div formArrayName="tags" class="flex flex-col gap-2">
+    <div class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+      Tags
+    </div>
+
+    @for (item of tags.controls; track $index) {
+      <div>
+        <input
+          id="alias-{{ $index }}"
+          type="text"
+          [formControlName]="$index"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
+      </div>
+    }
+    <div>
+      <button
+        (click)="addTag()"
+        type="button"
+        class="mt-4 py-2.5 px-5 mr-2 text-sm font-medium text-gray-900 bg-white rounded border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 inline-flex items-center"
+      >
+        + Add another tag
+      </button>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="mt-4 py-2.5 px-5 mr-2 text-sm font-medium text-gray-900 bg-white rounded border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 inline-flex items-center"
+  >
+    Create
+  </button>
+</form>

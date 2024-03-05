@@ -6,6 +6,7 @@ import { LoginComponent } from "./common/login/login.component";
 import { PageErrorComponent } from "./common/page-error/page-error.component";
 import { PageNotFoundComponent } from "./common/page-not-found/page-not-found.component";
 import { ComponentPlayGround } from "./components/main/main.component";
+import { CreatePostComponent } from "./post/create-post/create-post.component";
 import { EditPostComponent } from "./post/edit-post/edit-post.component";
 import { PostItemComponent } from "./post/post-item/post-item.component";
 import { postItemResolver } from "./post/post-item/post-item.resolver";
@@ -26,6 +27,10 @@ export const routes: TRoute[] = [
     path: "post",
     canActivate: [authGuard],
     children: [
+      {
+        path: "create",
+        component: CreatePostComponent,
+      },
       {
         path: ":id",
         component: PostItemComponent,

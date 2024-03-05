@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component, OnInit, inject } from "@angular/core";
-import { ActivatedRoute, RouterModule } from "@angular/router";
+import { ActivatedRoute, Router, RouterModule } from "@angular/router";
 
 import { TPost } from "../post-service/post.interface";
 import { PostListItemComponent } from "./post-list-item/post-list-item.component";
@@ -14,7 +14,7 @@ import { PostListItemComponent } from "./post-list-item/post-list-item.component
 export class PostListComponent implements OnInit {
   postList: TPost[] = [];
   private route = inject(ActivatedRoute);
-
+  private router = inject(Router);
   ngOnInit(): void {
     this.getPostList();
   }
@@ -24,5 +24,9 @@ export class PostListComponent implements OnInit {
       const postList: TPost[] = data["postList"];
       this.postList = postList;
     });
+  }
+
+  gotoCreatePost() {
+    this.router.navigate(["/post/create"]);
   }
 }
