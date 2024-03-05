@@ -1,0 +1,14 @@
+<div class="flex flex-col gap-4">
+  <div class="text-2xl">Component Playground</div>
+  <div>
+    <div class="text-xl">1. Attribute Selector</div>
+
+    <div test-attribute-selector></div>
+  </div>
+  <div>
+    <div class="text-xl">2. Custom events with outputs</div>
+    <app-custom-events
+      (customEvent)="onCustomEventsClick($event)"
+    ></app-custom-events>
+  </div>
+</div>

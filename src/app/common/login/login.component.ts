@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
-import { AuthService } from "../auth.service";
+import { Component, OnInit, inject } from "@angular/core";
 import { Router } from "@angular/router";
+
+import { AuthService } from "../auth.service";
 
 @Component({
   selector: "app-login",
@@ -10,10 +11,10 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   isLoggedIn = false;
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
+
+  private authService = inject(AuthService);
+  private router = inject(Router);
+
   login() {
     this.authService.logIn();
   }

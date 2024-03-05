@@ -1,35 +1,31 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, inject } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+
+import { PostListItemComponent } from "../post-list/post-list-item/post-list-item.component";
 import { TPost } from "../post-service/post.interface";
-import { PostService } from "../post-service/post.service";
 
 @Component({
   selector: "app-post-item",
   standalone: true,
-  imports: [],
+  imports: [PostListItemComponent],
   templateUrl: "./post-item.component.html",
 })
 export class PostItemComponent implements OnInit {
-  postDetail: TPost = {} as TPost;
-
-  constructor(
-    private route: ActivatedRoute,
-    private postService: PostService,
-    private router: Router
-  ) {}
+  postItem: TPost = {} as TPost;
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
 
   ngOnInit() {
-    const postId = this.route.snapshot.paramMap.get("id");
-    if (!postId) {
-      return;
-    }
-
-    this.postService.getPostById(postId).subscribe((postDetail) => {
-      this.postDetail = postDetail;
+    this.route.data.subscribe((data) => {
+      const postDetail: TPost = data["postItem"];
+      this.postItem = postDetail;
     });
   }
 
   gotoPostList() {
     this.router.navigate(["/post"]);
+  }
+  editPost() {
+    this.router.navigate(["/post/edit", this.postItem.id]);
   }
 }

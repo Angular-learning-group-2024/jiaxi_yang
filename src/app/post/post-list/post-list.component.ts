@@ -1,36 +1,32 @@
-import { Component, OnInit } from "@angular/core";
-import { TPost } from "../post-service/post.interface";
-import { PostService } from "../post-service/post.service";
 import { CommonModule } from "@angular/common";
-import { RouterModule } from "@angular/router";
-import { LoadingErrorIndicatorComponent } from "../../common/loading-error-indicator/loading-error-indicator.component";
+import { Component, OnInit, inject } from "@angular/core";
+import { ActivatedRoute, Router, RouterModule } from "@angular/router";
+
+import { TPost } from "../post-service/post.interface";
+import { PostListItemComponent } from "./post-list-item/post-list-item.component";
 
 @Component({
   selector: "app-post-list",
   standalone: true,
-  imports: [CommonModule, RouterModule, LoadingErrorIndicatorComponent],
+  imports: [CommonModule, RouterModule, PostListItemComponent],
   templateUrl: "./post-list.component.html",
 })
 export class PostListComponent implements OnInit {
-  posts: TPost[] = [];
-  isLoading = true;
-  isError = false;
-
-  constructor(private postService: PostService) {}
+  postList: TPost[] = [];
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
   ngOnInit(): void {
-    this.getPosts();
+    this.getPostList();
   }
 
-  getPosts() {
-    this.postService.getPosts().subscribe({
-      next: (posts) => {
-        this.posts = posts.slice(0, 10);
-        this.isLoading = false;
-      },
-      error: () => {
-        this.isLoading = false;
-        this.isError = true;
-      },
+  getPostList() {
+    this.route.data.subscribe((data) => {
+      const postList: TPost[] = data["postList"];
+      this.postList = postList;
     });
+  }
+
+  gotoCreatePost() {
+    this.router.navigate(["/post/create"]);
   }
 }
