@@ -6,6 +6,7 @@ import { FormBuilder } from "@angular/forms";
 import { Router } from "@angular/router";
 
 import { PostService } from "../post-service/post.service";
+import { postTitleValidator } from "./post-validator.directive";
 
 @Component({
   selector: "app-create-post",
@@ -22,7 +23,7 @@ export class CreatePostComponent {
   private router = inject(Router);
 
   postForm = this.formBuilder.group({
-    title: ["", Validators.required],
+    title: ["", [Validators.required, Validators.min(2), postTitleValidator()]],
     body: ["", Validators.required],
     tags: this.formBuilder.array([this.formBuilder.control("")]),
   });
@@ -30,6 +31,11 @@ export class CreatePostComponent {
   get tags() {
     return this.postForm.get("tags") as FormArray;
   }
+
+  get title() {
+    return this.postForm.get("title");
+  }
+
   onSubmit() {
     this.isSubmitted = true;
     if (!this.postForm.valid) {
