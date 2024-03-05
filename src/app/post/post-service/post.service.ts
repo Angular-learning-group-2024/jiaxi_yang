@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 
 import { BASE_URL } from "../../../constant/api";
-import { TPost } from "./post.interface";
+import { TCreatePost, TPost } from "./post.interface";
 
 @Injectable({
   providedIn: "root",
@@ -22,5 +22,9 @@ export class PostService {
 
   updatePost(post: TPost): Observable<TPost> {
     return this.http.put<TPost>(`${BASE_URL}/posts/${post.id}`, post);
+  }
+
+  createPost(post: TCreatePost): Observable<TPost> {
+    return this.http.post<TPost>(`${BASE_URL}/posts`, post);
   }
 }
