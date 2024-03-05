@@ -1,7 +1,8 @@
-import { Component, Input } from "@angular/core";
-import { TPost } from "../../post-service/post.interface";
-import { RouterModule } from "@angular/router";
 import { UpperCasePipe } from "@angular/common";
+import { Component, Input } from "@angular/core";
+import { RouterModule } from "@angular/router";
+
+import { TPost } from "../../post-service/post.interface";
 
 @Component({
   selector: "app-post-list-item",

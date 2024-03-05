@@ -1,8 +1,10 @@
-import { Injectable, inject } from "@angular/core";
-import { BASE_URL } from "../../../constant/api";
-import { HttpClient } from "@angular/common/http";
-import { TPost } from "./post.interface";
 import { Observable } from "rxjs";
+
+import { HttpClient } from "@angular/common/http";
+import { Injectable, inject } from "@angular/core";
+
+import { BASE_URL } from "../../../constant/api";
+import { TPost } from "./post.interface";
 
 @Injectable({
   providedIn: "root",

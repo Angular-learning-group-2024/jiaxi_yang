@@ -1,7 +1,8 @@
-import { Component, OnInit, inject } from "@angular/core";
-import { TPost } from "../post-service/post.interface";
 import { CommonModule } from "@angular/common";
+import { Component, OnInit, inject } from "@angular/core";
 import { ActivatedRoute, RouterModule } from "@angular/router";
+
+import { TPost } from "../post-service/post.interface";
 import { PostListItemComponent } from "./post-list-item/post-list-item.component";
 
 @Component({

@@ -1,17 +1,18 @@
 import { Route } from "@angular/router";
-import { PostListComponent } from "./post/post-list/post-list.component";
-import { PostItemComponent } from "./post/post-item/post-item.component";
-import { PageNotFoundComponent } from "./common/page-not-found/page-not-found.component";
+
 import { authGuard } from "./auth.guard";
-import { LoginComponent } from "./common/login/login.component";
-import { CanDeactivateComponent } from "./route-guards/can-deactivate/can-deactivate.component";
-import { RouteGuardsComponent } from "./route-guards/route-guards.component";
 import { canDeactivateGuard } from "./can-deactivate.guard";
-import { postItemResolver } from "./post/post-item/post-item.resolver";
-import { postListResolver } from "./post/post-list/post-list.resolver";
+import { LoginComponent } from "./common/login/login.component";
 import { PageErrorComponent } from "./common/page-error/page-error.component";
+import { PageNotFoundComponent } from "./common/page-not-found/page-not-found.component";
 import { ComponentPlayGround } from "./components/main/main.component";
 import { EditPostComponent } from "./post/edit-post/edit-post.component";
+import { PostItemComponent } from "./post/post-item/post-item.component";
+import { postItemResolver } from "./post/post-item/post-item.resolver";
+import { PostListComponent } from "./post/post-list/post-list.component";
+import { postListResolver } from "./post/post-list/post-list.resolver";
+import { CanDeactivateComponent } from "./route-guards/can-deactivate/can-deactivate.component";
+import { RouteGuardsComponent } from "./route-guards/route-guards.component";
 
 type TRoute = Route;
 

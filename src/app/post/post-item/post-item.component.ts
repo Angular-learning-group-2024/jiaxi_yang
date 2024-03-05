@@ -1,7 +1,8 @@
 import { Component, OnInit, inject } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { TPost } from "../post-service/post.interface";
+
 import { PostListItemComponent } from "../post-list/post-list-item/post-list-item.component";
+import { TPost } from "../post-service/post.interface";
 
 @Component({
   selector: "app-post-item",

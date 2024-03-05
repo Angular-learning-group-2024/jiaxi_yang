@@ -1,9 +1,11 @@
+import { EMPTY, of } from "rxjs";
+import { catchError, delay, mergeMap } from "rxjs/operators";
+
 import { inject } from "@angular/core";
 import { ResolveFn, Router } from "@angular/router";
-import { PostService } from "../post-service/post.service";
-import { catchError, delay, mergeMap } from "rxjs/operators";
-import { EMPTY, of } from "rxjs";
+
 import { TPost } from "../post-service/post.interface";
+import { PostService } from "../post-service/post.service";
 
 export const postListResolver: ResolveFn<TPost[]> = () => {
   const router = inject(Router);

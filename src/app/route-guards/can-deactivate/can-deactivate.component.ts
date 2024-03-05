@@ -1,6 +1,8 @@
+import { Observable } from "rxjs";
+
 import { Component, inject } from "@angular/core";
 import { Router } from "@angular/router";
-import { Observable } from "rxjs";
+
 import { DialogService } from "../../dialog.service";
 
 @Component({

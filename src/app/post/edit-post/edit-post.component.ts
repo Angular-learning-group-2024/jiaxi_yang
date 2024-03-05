@@ -1,9 +1,12 @@
-import { Component, OnInit, inject } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { TPost } from "../post-service/post.interface";
-import { FormControl, ReactiveFormsModule } from "@angular/forms";
-import { PostService } from "../post-service/post.service";
 import { finalize } from "rxjs/operators";
+
+import { Component, OnInit, inject } from "@angular/core";
+import { FormControl, ReactiveFormsModule } from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
+
+import { TPost } from "../post-service/post.interface";
+import { PostService } from "../post-service/post.service";
+
 @Component({
   selector: "app-edit-post",
   standalone: true,

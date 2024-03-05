@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+
 import { AttributeSelectorComponent } from "../attribute-selector/attribute-selector.component";
 import {
   CustomEventsComponent,
