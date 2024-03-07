@@ -5,7 +5,9 @@ import { canDeactivateGuard } from "./can-deactivate.guard";
 import { LoginComponent } from "./common/login/login.component";
 import { PageErrorComponent } from "./common/page-error/page-error.component";
 import { PageNotFoundComponent } from "./common/page-not-found/page-not-found.component";
+import { AsyncPipeComponent } from "./components/async-pipe/async-pipe.component";
 import { ComponentPlayGround } from "./components/main/main.component";
+import { PipeComponent } from "./components/pipe/pipe.component";
 import { CreatePostComponent } from "./post/create-post/create-post.component";
 import { EditPostComponent } from "./post/edit-post/edit-post.component";
 import { PostItemComponent } from "./post/post-item/post-item.component";
@@ -76,6 +78,14 @@ export const routes: TRoute[] = [
   {
     path: "component-playground",
     component: ComponentPlayGround,
+  },
+  {
+    path: "pipe",
+    component: PipeComponent,
+  },
+  {
+    path: "async-pipe",
+    component: AsyncPipeComponent,
   },
   { path: "**", component: PageNotFoundComponent },
 ];

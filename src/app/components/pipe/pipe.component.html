@@ -1,0 +1,52 @@
+<div class="text-2xl">Pipes</div>
+
+<div class="flex flex-col gap-4 mt-4">
+  <div class="border rounded p-2 flex flex-col gap-2">
+    <div>Date Pipe</div>
+    <div flex flex-col gap-1>
+      <div>fullDate: {{ date | date: "fullDate" }}</div>
+      <div>short: {{ date | date: "short" }}</div>
+      <div>medium: {{ date | date: "medium" }}</div>
+      <div>long: {{ date | date: "long" }}</div>
+    </div>
+  </div>
+
+  <div class="border rounded p-2 flex flex-col gap-2">
+    <div>DecimalPipe Pipe</div>
+    <div flex flex-col gap-1>
+      <div>123456.123456 number: {{ 123456.123456 | number }}</div>
+      <div>
+        123456.123456 number: "1.2-2": {{ 123456.123456 | number: "1.2-2" }}
+      </div>
+      <div>
+        123456.123456 number: "1.2-5": {{ 123456.123456 | number: "1.2-5" }}
+      </div>
+      <div>
+        123456.123456 number: "1.2-6": {{ 123456.123456 | number: "1.2-6" }}
+      </div>
+      <div>
+        123456.123456 number: "1.2-7": {{ 123456.123456 | number: "1.2-7" }}
+      </div>
+    </div>
+  </div>
+  <div class="border rounded p-2 flex flex-col gap-2">
+    <div>Custom Pipe</div>
+    <div flex flex-col gap-1>
+      <div>
+        10-3: {{ 10 | calculate: { mode: ECalculateMode.MINUS, value: 3 } }}
+      </div>
+      <div>
+        10+3: {{ 10 | calculate: { mode: ECalculateMode.PLUS, value: 3 } }}
+      </div>
+    </div>
+  </div>
+
+  <div>{{ list | array | json }}</div>
+  <div>{{ list | imPureArray | json }}</div>
+  <div>{{ newList | array | json }}</div>
+
+  <div>{{ list | json }}</div>
+  <div>{{ newList | json }}</div>
+
+  <button (click)="addNumberToList()">Add</button>
+</div>
