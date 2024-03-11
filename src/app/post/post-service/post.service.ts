@@ -1,9 +1,10 @@
 import { Observable } from "rxjs";
 
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpContext } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 
 import { BASE_URL } from "../../../constant/api";
+import { CACHING_ENABLED } from "../../app.interceptor";
 import { TCreatePost, TPost } from "./post.interface";
 
 @Injectable({
@@ -14,6 +15,11 @@ export class PostService {
 
   getPosts(): Observable<TPost[]> {
     return this.http.get<TPost[]>(`${BASE_URL}/posts`);
+  }
+  refreshPosts(): Observable<TPost[]> {
+    return this.http.get<TPost[]>(`${BASE_URL}/posts`, {
+      context: new HttpContext().set(CACHING_ENABLED, false),
+    });
   }
 
   getPostById(id: string): Observable<TPost> {
